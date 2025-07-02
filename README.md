@@ -1,5 +1,14 @@
 # TwoParameterBias
 
+## Usage 
+Use sage to compile `trace_of_frobenius.py`: 
+```
+sage -python trace_of_frobenius.py
+```
+This computes the necessary trace of Frobenius values for primes from the range `<lower>` to `<upper>`. 
+
+Using the files it saves, you can just use the SMALL 2024 code (below) to use it. 
+
 Current Goals:
 
 Set up:
