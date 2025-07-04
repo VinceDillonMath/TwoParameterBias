@@ -49,6 +49,7 @@ def find_quartic_residue_classes(p):
     return class_reps
 
 def a_for_prime(p, output_dir='classdata'):
+    os.makedirs(output_dir, exist_ok=True)
     filename = os.path.join(output_dir, f"file_{p}.csv")
 
     with open(filename, "w") as f:
