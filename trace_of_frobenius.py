@@ -48,6 +48,33 @@ def find_quartic_residue_classes(p):
     print("Something very bad has happened if this is printed.")
     return class_reps
 
+def a_for_prime(p, output_dir='classdata'):
+    filename = os.path.join(output_dir, f"file_{p}.csv")
+
+    with open(filename, "w") as f:
+        residue_classes = find_quartic_residue_classes(p)
+
+        # A = 0 special case
+        if p % 3 == 1:
+            seen = set()
+            written = 0
+            for b in range(1, p):
+                if written == 6:
+                    break
+                result = frobenius_trace(0, b, p)
+                if result not in seen:
+                    seen.add(result)
+                    f.write(f"{b},{result}\n")
+                    written += 1
+
+        # A ≠ 0 cases (use quartic residues)
+        for A in residue_classes[1:]:  # skip A = 0
+            for B in range(p):
+                result = frobenius_trace(A, B, p)
+                f.write(f"{result}\n")
+
+    return 1
+
 
 def compute_a_constants(lower, upper, output_dir="classdata"):
     import os
