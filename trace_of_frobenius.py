@@ -74,7 +74,7 @@ def a_for_prime(p, output_dir='classdata'):
                 result = frobenius_trace(A, B, p)
                 f.write(f"{result}\n")
 
-    return 1
+    return p
 
 
 def compute_a_constants(lower, upper, output_dir="classdata"):
