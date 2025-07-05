@@ -1,6 +1,11 @@
 import os 
 from tasks import main_prime
-from sage.all import *
+from sympy import primerange
+from celery.signals import task_postrun
 
-for p in list(primes(10000, 20000)):
-    add.delay(main_prime(p))
+# from sage.all import *
+
+with open('missing', 'r', newline='') as f:
+    for line in f:
+        main_prime.delay(int(line))
+
